@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px; 
+}
+</style>
+</head>
+<body>
+   <form id="form">
+  <div class="checkbox-container">
+    <input type="checkbox" id="checkbox1">
+    <label for="checkbox1">Out Patient</label>
+  </div>
+  <div class="checkbox-container">
+    <input type="checkbox" id="checkbox2">
+    <label for="checkbox2"> Confinement</label>
+  </div>
+  <div class="checkbox-container">
+    <input type="checkbox" id="checkbox3">
+    <label for="checkbox3">Disability</label>
+  </div>
+  <div class="checkbox-container">
+    <input type="checkbox" id="checkbox4">
+    <label for="checkbox4">Surgery</label>
+  </div>
+  <div class="checkbox-container">
+    <input type="checkbox" id="checkbox5">
+    <label for="checkbox5">Dismemberment</label>
+  </div>
+  <br><br>
+  <button type="submit" onclick="submitForm()">Submit</button>
+</form>
+
+    <script>
+      function submitForm() {
+  let selectedOptions = [];
+
+  for (let i = 1; i <= 5; i++) {
+    let checkbox = document.getElementById(`checkbox${i}`);
+    if (checkbox.checked) {
+      selectedOptions.push(checkbox.nextSibling.innerText.trim());
+    }
+  }
+
+  localStorage.setItem("selectedOptions", JSON.stringify(selectedOptions));
+  window.parent.postMessage(
+            JSON.stringify({
+              event_code: "ym-client-event",
+            
+               data:selectedOptions
+              
+            }),
+            "*"
+          );
+}
+
+
+
+    </script>
+    
+</body>
+
+</html>
