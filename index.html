@@ -12,6 +12,14 @@
 input[type="checkbox"] {
   margin-right: 10px; 
 }
+button[type="submit"] { 
+      width: 30%; 
+      padding: 10px; 
+      background-color: #4CAF50; 
+      color: white; 
+      font-size: 16px; 
+      cursor: pointer; 
+    } 
 </style>
 </head>
 <body>
@@ -36,7 +44,11 @@ input[type="checkbox"] {
     <input type="checkbox" id="checkbox5">
     <label for="checkbox5">Dismemberment</label>
   </div>
-  <br><br>
+  <div class="checkbox-container">
+    <input type="checkbox" id="checkbox5">
+    <label for="checkbox5"><b>I have read and understand the terms and conditions.</b></label>
+  </div>
+  
   <button type="submit" onclick="submitForm()">Submit</button>
 </form>
 
