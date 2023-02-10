@@ -54,25 +54,17 @@ button[type="submit"] {
 
     <script>
       function submitForm() {
-  let selectedOptions = [];
-
-  for (let i = 1; i <= 5; i++) {
-    let checkbox = document.getElementById(`checkbox${i}`);
-    if (checkbox.checked) {
-      selectedOptions.push(checkbox.nextSibling.innerText.trim());
-    }
-  }
+  //let selectedOptions = [];
+let selectedOptions = document.getElementById("selectedOptions");
 
   localStorage.setItem("selectedOptions", JSON.stringify(selectedOptions));
   window.parent.postMessage(
-            JSON.stringify({
-              event_code: "ym-client-event",
-            
-               data:selectedOptions
-              
-            }),
-            "*"
-          );
+       JSON.stringify({
+                    event_code: "ym-client-event",
+                    data: selectedOptions
+               }),
+                "*"
+           );  
 }
 
 
